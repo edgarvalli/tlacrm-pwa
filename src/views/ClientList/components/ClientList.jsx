@@ -1,6 +1,7 @@
 import React from "react";
 import evclient from "../../../helpers/evclient";
 import Loader from "../../../components/LinearLoader";
+import ListView from "../../../components/ListView";
 import {
   List,
   Avatar,
@@ -19,7 +20,7 @@ function ClientList(props) {
     evclient("clients")
       .get()
       .then(response => {
-        console.log(response)
+        console.log(response);
         // setClients(response.children);
         setShowLoader(false);
         if (response.error) {
@@ -33,27 +34,27 @@ function ClientList(props) {
   }, []);
 
   return (
-    <List>
-      {clients.map(client => (
-        <ListItem
-          key={client._id}
-          button
-          onClick={() => props.navigation.go("ClientPreview", { client })}
-        >
-          <ListItemAvatar>
-            <Avatar>{client.name[0]}</Avatar>
-          </ListItemAvatar>
-          <ListItemText
-            primary={client.name}
-            secondary={client.cellphone || client.phone || ""}
-          />
-        </ListItem>
-      ))}
-      {clients.length <= 0 && (
-        <Typography color="secondary" variant="h6">{errorMessage}</Typography>
-      )}
+    <>
+      <ListView
+        data={clients}
+        renderItems={client => (
+          <ListItem
+            key={client._id}
+            button
+            onClick={() => props.navigation.go("ClientPreview", { client })}
+          >
+            <ListItemAvatar>
+              <Avatar>{client.name[0]}</Avatar>
+            </ListItemAvatar>
+            <ListItemText
+              primary={client.name}
+              secondary={client.cellphone || client.phone || ""}
+            />
+          </ListItem>
+        )}
+      />
       <Loader show={showLoader} message="Obteniendo clientes" />
-    </List>
+    </>
   );
 }
 

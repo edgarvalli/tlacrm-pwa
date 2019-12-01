@@ -7,11 +7,10 @@ import ClientPicker from "../../../components/ClientPicker";
 
 const useStyle = makeStyles({
   root: {
-    padding: "5rem 0 4rem 0",
+    padding: "3rem 0 4rem 0",
     background: "#e1e1e1"
   },
   card: {
-    marginTop: "1rem",
     width: "100%"
   }
 });

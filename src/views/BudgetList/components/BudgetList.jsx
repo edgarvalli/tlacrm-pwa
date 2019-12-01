@@ -1,6 +1,8 @@
 import React from "react";
 import evclient from "../../../helpers/evclient";
 import LinearLoader from "../../../components/LinearLoader";
+import ListView from "../../../components/ListView";
+
 import {
   Card,
   ListItem,
@@ -36,8 +38,10 @@ function BudgetList(props) {
           {errorMessage}
         </Typography>
       )}
-      {budgets.map(budget => (
-        <ListItem button key={budget._id} onClick={() => props.onSelect(budget)}>
+      <ListView
+        data={budgets}
+        renderItems={(budget) =>(
+          <ListItem button key={budget._id} onClick={() => props.onSelect(budget)}>
           <Card className={props.classes.card || {}}>
             <CardHeader
               title={budget.clientName}
@@ -53,7 +57,8 @@ function BudgetList(props) {
             </CardActions>
           </Card>
         </ListItem>
-      ))}
+        )}
+      />
     </>
   );
 }

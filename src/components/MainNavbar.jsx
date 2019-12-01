@@ -86,7 +86,7 @@ const MainNavbar = props => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
   return (
     <AppBar position="fixed" style={props.style} id="main-navbar">
-      <Toolbar>
+      <Toolbar variant="regular">
         <Icon onClick={() => setOpenDrawer(true)}>menu</Icon>
       </Toolbar>
       <Swipe
