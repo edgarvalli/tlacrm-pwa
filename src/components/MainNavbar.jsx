@@ -11,7 +11,8 @@ import {
   ListItemText,
   ListItemIcon,
   ListItemAvatar,
-  SwipeableDrawer
+  SwipeableDrawer,
+  Typography
 } from "@material-ui/core";
 
 const swipeMenu = [
@@ -88,6 +89,9 @@ const MainNavbar = props => {
     <AppBar position="fixed" style={props.style} id="main-navbar">
       <Toolbar variant="regular">
         <Icon onClick={() => setOpenDrawer(true)}>menu</Icon>
+        <Typography style={{ marginLeft: '10px' }} variant='h6'>
+          <span id="titlebar"></span>
+        </Typography>
       </Toolbar>
       <Swipe
         open={openDrawer}

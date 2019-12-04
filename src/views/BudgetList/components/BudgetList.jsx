@@ -40,23 +40,28 @@ function BudgetList(props) {
       )}
       <ListView
         data={budgets}
-        renderItems={(budget) =>(
-          <ListItem button key={budget._id} onClick={() => props.onSelect(budget)}>
-          <Card className={props.classes.card || {}}>
-            <CardHeader
-              title={budget.clientName}
-              subheader={budget.createDate.replace("T", " ").split(".")[0]}
-            />
-            <CardContent>
-              {budget.description.split("\n").map((row, i) => (
-                <div key={row + i}>{row}</div>
-              ))}
-            </CardContent>
-            <CardActions>
-              {budget.visited ? "Visitado" : "Sin visitar"}
-            </CardActions>
-          </Card>
-        </ListItem>
+        reverse
+        renderItems={budget => (
+          <ListItem
+            button
+            key={budget._id}
+            onClick={() => props.onSelect(budget)}
+          >
+            <Card className={props.classes.card || {}}>
+              <CardHeader
+                title={budget.clientName}
+                subheader={budget.createDate.replace("T", " ").split(".")[0]}
+              />
+              <CardContent>
+                {budget.description.split("\n").map((row, i) => (
+                  <div key={row + i}>{row}</div>
+                ))}
+              </CardContent>
+              <CardActions>
+                {budget.visited ? "Visitado" : "Sin visitar"}
+              </CardActions>
+            </Card>
+          </ListItem>
         )}
       />
     </>

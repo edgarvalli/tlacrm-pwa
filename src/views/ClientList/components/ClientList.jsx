@@ -3,40 +3,55 @@ import evclient from "../../../helpers/evclient";
 import Loader from "../../../components/LinearLoader";
 import ListView from "../../../components/ListView";
 import {
-  List,
   Avatar,
   ListItem,
   ListItemText,
-  ListItemAvatar,
-  Typography
+  ListItemAvatar
 } from "@material-ui/core";
+
+// function fillItems(total = 1000) {
+//   const items = [];
+//   for(let i = 0; i < 1000; i++) {
+//     items.push({
+//       name: 'item ' + (i + 1),
+//       cellphone: '0123842'
+//     })
+//   }
+//   return items;
+// }
 
 function ClientList(props) {
   const [clients, setClients] = React.useState([]);
   const [showLoader, setShowLoader] = React.useState(true);
   const [errorMessage, setErrorMessage] = React.useState("");
+  const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
     evclient("clients")
       .get()
       .then(response => {
-        console.log(response);
-        // setClients(response.children);
+        setClients(response.data);
         setShowLoader(false);
         if (response.error) {
           setErrorMessage(response.message);
+          setError(true);
           return;
         } else {
           setClients(response.data);
         }
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        setErrorMessage(error);
+        setError(true);
+      });
   }, []);
 
   return (
     <>
       <ListView
         data={clients}
+        errorMessage={errorMessage}
+        error={error}
         renderItems={client => (
           <ListItem
             key={client._id}
