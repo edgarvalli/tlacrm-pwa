@@ -3,14 +3,7 @@ import evclient from "../../../helpers/evclient";
 import LinearLoader from "../../../components/LinearLoader";
 import ListView from "../../../components/ListView";
 
-import {
-  Card,
-  ListItem,
-  CardHeader,
-  Typography,
-  CardContent,
-  CardActions
-} from "@material-ui/core";
+import { ListItem, Typography } from "@material-ui/core";
 
 function BudgetList(props) {
   const [budgets, setBudgets] = React.useState([]);
@@ -42,25 +35,19 @@ function BudgetList(props) {
         data={budgets}
         reverse
         renderItems={budget => (
-          <ListItem
-            button
-            key={budget._id}
-            onClick={() => props.onSelect(budget)}
-          >
-            <Card className={props.classes.card || {}}>
-              <CardHeader
-                title={budget.clientName}
-                subheader={budget.createDate.replace("T", " ").split(".")[0]}
-              />
-              <CardContent>
+          <ListItem button key={budget._id} onClick={() => props.onSelect(budget)}>
+            <div className="ev-card border-bottom-grey">
+              <h4>{budget.clientName}</h4>
+              <div style={{ fontSize: ".75rem" }}>
+                {budget.createDate.replace("T", " ").split(".")[0]}
+              </div>
+              <div>
                 {budget.description.split("\n").map((row, i) => (
                   <div key={row + i}>{row}</div>
                 ))}
-              </CardContent>
-              <CardActions>
-                {budget.visited ? "Visitado" : "Sin visitar"}
-              </CardActions>
-            </Card>
+              </div>
+              <span>{budget.visited ? "Visitado" : "Sin visitar"}</span>
+            </div>
           </ListItem>
         )}
       />

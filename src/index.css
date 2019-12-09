@@ -35,6 +35,9 @@ code {
   justify-content: center;
   align-items: center;
 }
+.border-bottom-grey {
+  border-bottom: solid thin #e1e1e1;
+}
 
 .login-container {
   padding: 1rem;
@@ -68,4 +71,14 @@ code {
   left: 0;
   margin-left: -10;
   position: relative;
+}
+
+.ev-card {
+  background: #ffffff;
+  width: 100%;
+  padding: .5rem;
+}
+
+.ev-card * {
+  margin-bottom: 10px;
 }

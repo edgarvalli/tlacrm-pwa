@@ -27,6 +27,12 @@ const swipeMenu = [
     params: {},
     icon: "work",
     label: "Presupuesto"
+  },
+  {
+    reactPath: "H?JobList",
+    params: {},
+    icon: "folder",
+    label: "Trabajos"
   }
 ];
 
@@ -45,12 +51,17 @@ const Swipe = props => {
       <List>
         <ListItem button>
           <ListItemAvatar>
-            <Avatar src={"https://ev-server.ddns.net/evserver/image/?id=" + params.getItem("ev-id")}/>
+            <Avatar
+              src={
+                "https://ev-server.ddns.net/evserver/image/?id=" +
+                params.getItem("ev-id")
+              }
+            />
           </ListItemAvatar>
           <ListItemText primary={params.getItem("ev-fullname") || ""} />
         </ListItem>
         <ListItem>
-          <ListItemText primary={params.getItem("ev-email") || ""}/>
+          <ListItemText primary={params.getItem("ev-email") || ""} />
         </ListItem>
       </List>
 
@@ -76,7 +87,7 @@ const Swipe = props => {
           <ListItemIcon>
             <Icon>exit_to_app</Icon>
           </ListItemIcon>
-          <ListItemText primary="Cerrar Sesión"/>
+          <ListItemText primary="Cerrar Sesión" />
         </ListItem>
       </List>
     </SwipeableDrawer>
@@ -89,7 +100,7 @@ const MainNavbar = props => {
     <AppBar position="fixed" style={props.style} id="main-navbar">
       <Toolbar variant="regular">
         <Icon onClick={() => setOpenDrawer(true)}>menu</Icon>
-        <Typography style={{ marginLeft: '10px' }} variant='h6'>
+        <Typography style={{ marginLeft: "10px" }} variant="h6">
           <span id="titlebar"></span>
         </Typography>
       </Toolbar>

@@ -23,7 +23,6 @@ class App extends React.Component {
     } else {
       this.setOnStore(this.state.views);
     }
-    window.titlebar.innerHTML = "HEllo"
   }
 
   setOnStore = views => {

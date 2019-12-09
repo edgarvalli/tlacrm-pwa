@@ -1,22 +1,10 @@
 import React from "react";
-import { Container, makeStyles } from "@material-ui/core";
 import FloatButton from "../../../components/FloatButton";
 import BudgetList from "./BudgetList";
 import UpdateBudget from "./UpdateBudget";
 import ClientPicker from "../../../components/ClientPicker";
 
-const useStyle = makeStyles({
-  root: {
-    padding: "3rem 0 4rem 0",
-    background: "#e1e1e1"
-  },
-  card: {
-    width: "100%"
-  }
-});
-
 function BudgetListLayout(props) {
-  const classes = useStyle();
   const [openDialog, setOpenDialog] = React.useState(false);
   const [openClientPicker, setOpenClientPicker] = React.useState(false);
   const [budget, setBudget] = React.useState({});
@@ -25,7 +13,7 @@ function BudgetListLayout(props) {
     setOpenDialog(true);
   };
   return (
-    <Container className={classes.root}>
+    <div style={{ marginTop: "3rem" }}>
       <ClientPicker
         open={openClientPicker}
         onClose={() => setOpenClientPicker(false)}
@@ -38,9 +26,9 @@ function BudgetListLayout(props) {
         open={openDialog}
         onClose={() => setOpenDialog(false)}
       />
-      <BudgetList {...props} classes={classes} onSelect={handleSelectBudget} />
+      <BudgetList {...props} onSelect={handleSelectBudget} />
       <FloatButton icon="add" onClick={() => setOpenClientPicker(true)} />
-    </Container>
+    </div>
   );
 }
 
