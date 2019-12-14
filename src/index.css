@@ -73,12 +73,43 @@ code {
   position: relative;
 }
 
+.ev-container {
+  position: relative;
+  margin-top: 4rem;
+  width: 100vw;
+}
+
 .ev-card {
   background: #ffffff;
   width: 100%;
-  padding: .5rem;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
-.ev-card * {
-  margin-bottom: 10px;
+.ev-card:hover {
+  background: #e1e1e1 radial-gradient(circle, transparent 1%, #e1e1e1 1%)
+    center/15000%;
+}
+
+.ev-card-row__2 {
+  display: grid;
+  grid-template-columns: 50% auto;
+  grid-column-gap: 10px;
+}
+
+.justify-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.font-size-small {
+  font-size: 10px;
+}
+
+.font-size-medium {
+  font-size: 15px;
 }
